@@ -15,7 +15,7 @@ How-to instructions:
   - Type "ant package"
   - Now, go to the "target" folder and copy .war to tomcat's "webapps" directory
   - Then, launch tomcat (ubuntu: give permissions to "startup.sh" and "catalina.sh", then execute "startup.sh" from tomcat's bin directory)
-  - Go to "localhost:8080/AkvelonTestTask/" (port may be different, depends of your setting)
+  - Go to "localhost:8080/AkvelonTestTask/" (port may be different, depends of your settings)
 
 Additional notes:
   - Database connection properies can be found in file src/main/resources/db.properties

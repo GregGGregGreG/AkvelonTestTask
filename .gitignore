@@ -1,10 +1,17 @@
-*target*
+# Directories #
+/build/
+/bin/
+target/
+
+*.class
+ 
+# Package Files #
 *.jar
 *.war
 *.ear
-*.class
+*.db
 
-# eclipse specific git ignore
+# Eclipse
 *.pydevproject
 .project
 .metadata
@@ -20,8 +27,8 @@ local.properties
 .settings/
 .loadpath
 
-# External tool builders
-.externalToolBuilders/
-
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+# PDT-specific
+.buildpath

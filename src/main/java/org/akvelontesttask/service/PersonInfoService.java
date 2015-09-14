@@ -6,7 +6,7 @@ import org.akvelontesttask.domain.PersonInfo;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Service which represents business logic to be performed on {@link PersonInfo}
+ * Service which represents business logic to be performed on {@link PersonInfo} entities
  * @author baddev
  */
 public interface PersonInfoService {
@@ -40,7 +40,6 @@ public interface PersonInfoService {
 	PersonInfo load(PersonInfo example);
 
 	/**
-	 * 
 	 * @param id is an identifier of entity that we need to load
 	 * @return {@link PersonInfo} entity loaded by specified id
 	 */

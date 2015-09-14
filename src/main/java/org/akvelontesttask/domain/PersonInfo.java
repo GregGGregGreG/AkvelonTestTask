@@ -16,9 +16,8 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * This class represents simple information about person and is an entity to be persisted 
+ * This class represents simple information about person and is an entity to be persisted
  * @author baddev
- *
  */
 
 @Entity

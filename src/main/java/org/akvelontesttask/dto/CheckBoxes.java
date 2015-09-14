@@ -1,7 +1,7 @@
 package org.akvelontesttask.dto;
 
 /**
- * Class for transfer objects which hold checkboxes
+ * Holds identifiers which will be transferred to controller when form is submitted
  * @author baddev
  *
  */

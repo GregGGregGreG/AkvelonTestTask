@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * Controller which services all operations performed on {@link PersonInfo}
+ * Controller which services user's operations performed on {@link PersonInfo}
  * @author baddev
  *
  */

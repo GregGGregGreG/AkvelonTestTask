@@ -14,11 +14,11 @@ import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Default, underlying implementation of basic data access operation.
+ * Default, underlying implementation of basic data access operations.
  * @author baddev
  *
- * @param <T>
- * @param <ID>
+ * @param <T> target type
+ * @param <ID> type of identifier of target type
  * @see {@link GenericDao}
  */
 public abstract class HibernateGenericDao<T extends IEntity<ID>, ID extends Serializable> implements GenericDao<T, ID> {

@@ -14,6 +14,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * DTO for personInfo form. Has validation rules.
+ * @author baddev
+ *
+ */
+
 public class PersonInfoForm {
 
 	@NotEmpty(message="{err.empty}")

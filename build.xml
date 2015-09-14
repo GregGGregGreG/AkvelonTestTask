@@ -1,0 +1,96 @@
+<!DOCTYPE project>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="AkvelonTestTask" default="main" basedir=".">
+
+	<description>
+		Compiling and packaging project to war file
+	</description>
+
+	<property name="project.name" value="AkvelonTestTask" />
+	<!-- Project structure -->
+	<property name="jdk.version" value="1.7" />
+	<property name="projectName" value="AkvelonTestTask" />
+	<property name="src.dir" location="src" />
+	<property name="main.dir" location="${src.dir}/main/java" />
+	<property name="resources.main.dir" location="${src.dir}/main/resources" />
+	<property name="web.dir" location="war" />
+	<property name="web.resources.dir" location="${web.dir}/resources" />
+	<property name="webinf.dir" location="${web.dir}/WEB-INF" />
+	<property name="classes.dir" location="${webinf.dir}/classes" />
+	<property name="target.dir" location="target" />
+	<property name="lib.dir" value="lib" />
+	
+	<!-- Testing related directories -->
+	<!-- <property name="test.dir" location="${src.dir}/test/java" />
+	<property name="resources.test.dir" location="${src.dir}/test/resources" />
+	<property name="test.classes.dir" location="${webinf.dir}/test-classes" /> -->
+	
+	<!-- Ivy properties -->
+	<condition property="ivy.home" value="${env.IVY_HOME}">
+		<isset property="env.IVY_HOME" />
+	</condition>
+	<property name="ivy.version" value="2.4.0" />
+	<property name="ivy.home" value="${user.home}/.ant" />
+	<property name="ivy.jar.dir" value="${ivy.home}/lib" />
+	<property name="ivy.jar.file" value="${ivy.jar.dir}/ivy-${ivy.version}.jar" />
+	<property name="ivy.repo.path" value="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar" />
+
+	<!-- Download ivy if online -->
+	<target name="ivy-download" unless="offline" description="installing ivy">
+		<mkdir dir="${ivy.jar.dir}" />
+		<get dest="${ivy.jar.file}" src="${ivy.repo.path}" />
+	</target>
+
+	<!-- Init ivy from ${ivy.jar.dir} -->
+	<target name="ivy-init" depends="ivy-download">
+		<path id="ivy.lib.path">
+			<fileset dir="${ivy.jar.dir}" includes="*.jar" />
+		</path>
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path" />
+	</target>
+
+	<!-- Start ivy -->
+	<target name="resolve" depends="ivy-init" description="getting dependencies with ivy">
+		<echo message="Getting ivy dependencies..." />
+		<ivy:retrieve />
+		<ivy:cachepath pathid="compile.path" conf="compile" />
+		<ivy:cachepath pathid="runtime.path" conf="runtime" />
+		<ivy:cachepath pathid="test.path" conf="test" />
+	</target>
+
+	<!-- Compile java sources-->
+	<target name="compile" depends="resolve" description="compiling sources">
+		<mkdir dir="${classes.dir}" />
+		<javac destdir="${classes.dir}" srcdir="${main.dir}" source="${jdk.version}" target="${jdk.version}" debug="true" includeantruntime="false" classpathref="compile.path" />
+	</target>
+
+	<!-- Copy *.xml or *.properties to war -->
+	<target name="copy-resources" description="copying resources(.xml, .properties) to war">
+		<copy todir="${classes.dir}">
+			<fileset dir="${resources.main.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Create the WAR -->
+	<target name="package" depends="clean, compile, copy-resources" description="creating a war file">
+		<mkdir dir="${target.dir}" />
+		<war destfile="${target.dir}/${project.name}.war" webxml="${webinf.dir}/web.xml">
+			<webinf dir="${webinf.dir}" />
+			<!-- populate WAR file with libs -->
+			<lib dir="${lib.dir}" />
+			<zipfileset dir="${web.resources.dir}" prefix="resources" />
+		</war>
+	</target>
+
+	<!-- Delete folders -->
+	<target name="clean" description="cleaning up">
+		<delete dir="${classes.dir}" />
+		<delete dir="${target.dir}" />
+		<delete dir="${lib.dir}"/>
+	</target>
+
+	<target name="main" depends="package" />
+
+</project>

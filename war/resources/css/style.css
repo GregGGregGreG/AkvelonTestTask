@@ -1,0 +1,201 @@
+body {
+	margin: 0 auto;
+	/* background: #FAFAFF; */
+	background-image: url(../img/bg_dotted.png);
+	background-repeat: repeat; 
+	width: 100%;
+	padding-top: 50px;
+	font-family: Arial, sans-serif;
+}
+
+form {
+	margin: 0 auto;
+}
+
+table, thead, tbody, tfoot, tr, td, th {
+	text-align: center;
+	border: 1px solid #dedede;
+	padding: 0.8rem;
+}
+
+table {
+	background: #fff;
+	border: 1px solid #FF6666;
+	margin: 0 auto;
+}
+
+/* Title */
+.title {
+	text-align: center;
+	overflow: hidden;
+}
+
+.tag {
+	text-transform: uppercase;
+	position: relative;
+	line-height: 40px;
+	padding: 0 15px;
+	display: inline-block;
+}
+
+.tag-regular {
+	background-color: #fff;
+	border: 1px solid #FF6666;
+	color: black;
+}
+
+.tag:before, .tag:after {
+	content: "";
+	height: 1px;
+	/* any width higher than the widest part of the page */
+	width: 1000px;
+	position: absolute;
+	top: 50%;
+	display: block;
+}
+
+.tag:before {
+	left: -1000px;
+}
+
+.tag:after {
+	right: -1000px;
+}
+
+.tag-regular:before, .tag-regular:after {
+	/* lines */
+	background-color: #FF6666;
+}
+/* End title */
+.delimiter {
+	height: 50px;
+	clear: both;
+}
+
+.container {
+	margin: 0 auto;
+	width: 1024px;
+	clear: both;
+	text-align: center;
+}
+
+.red {
+	color: #FF6666;
+}
+
+.error {
+	color: #FF6666;
+	font-size: 75%;
+	display:block;
+	position:relative;
+}
+
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.overlay.hidden {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* Popup */
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.5);
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup {
+	margin: 200px auto;
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #FF6666;
+	width: 300px;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+	position: relative;
+}
+
+.popup h3 {
+	border-bottom: thin solid black;
+	margin-top: 0;
+	color: #FF6666;
+	font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+}
+
+.popup .content {
+	max-height: 400px;
+	overflow: auto;
+}
+
+.popup .close {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 20px;
+	right: 12px;
+	opacity: 0.8;
+	font-size: 24px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #666;
+}
+
+.popup .close:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+.popup p {
+	margin: 0 0 12px;
+}
+
+/* End popup */
+
+/* Buttons and inputs */
+.input, .btn {
+	padding: 10px 15px;
+	font-size: 16px;
+	border-radius: 2px;
+	-webkit-appearance: none;
+}
+
+.input {
+	border: 1px solid lightgray;
+	width: 250px;
+}
+
+.btn {
+	background-color: #FF6666;
+	opacity:0.9;
+	/**
+     * If the input field has a border,
+     * you need it here too to achieve equal heights.
+     */
+	border: 1px solid transparent;
+	font-weight: bold;
+}
+
+.btn:hover{
+	cursor: pointer;
+	opacity:1;
+}
+
+/**
+ * Firefox Fix
+ * Without that the submit button will be too high.
+ */
+.btn::-moz-focus-inner {
+	border: 0;
+}

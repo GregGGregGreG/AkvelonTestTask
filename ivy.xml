@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<ivy-module version="2.0">
+	<info organisation="org.apache" module="WebProject"/>
+
+	<configurations>
+        <conf name="compile" description="compile dependencies"/>
+        <conf name="runtime" description="runtime dependencies" extends="compile"/>
+        <conf name="test" description="test dependencies" extends="runtime"/>
+    </configurations>
+    
+	<dependencies>
+		<dependency org="mysql" name="mysql-connector-java" rev="5.1.14" conf="compile->default"/>
+		<dependency org="org.hibernate" name="hibernate-core" rev="4.3.6.Final" conf="compile->default"/>
+		<dependency org="org.hibernate" name="hibernate-c3p0" rev="4.3.6.Final" conf="compile->default"/>
+		<dependency org="org.hibernate" name="hibernate-validator" rev="5.2.0.Final" conf="compile->default"/>
+		<dependency org="javax.validation" name="validation-api" rev="1.1.0.Final" conf="compile->default"/>
+		<dependency org="org.hsqldb" name="hsqldb" rev="2.3.2" conf="test->default"/>
+		<dependency org="taglibs" name="standard" rev="1.1.2" conf="compile->default"/>
+		<dependency org="junit" name="junit" rev="4.12" conf="test->default"/>
+		<dependency org="org.hamcrest" name="hamcrest-junit" rev="2.0.0.0" conf="test->default"/>
+		<dependency org="org.mockito" name="mockito-all" rev="1.10.19" conf="compile->default"/>
+		<dependency org="jstl" name="jstl" rev="1.2" conf="compile->default"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.3" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-core" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-beans" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-context" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-orm" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-web" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-tx" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-webmvc" rev="4.1.6.RELEASE" conf="compile->default"/>
+		<dependency org="org.springframework" name="spring-test" rev="4.1.6.RELEASE" conf="test->default"/>
+	</dependencies>
+</ivy-module>

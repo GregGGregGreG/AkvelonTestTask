@@ -1,6 +1,7 @@
 # AkvelonTestTask
 
-Pre-requirements
+## Pre-requirements
+
 Software used:
   - Apache Ant v 1.9.6
   - Apache Tomcat 7

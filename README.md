@@ -14,6 +14,7 @@ How-to instructions:
   - Open terminal
   - Type "ant package"
   - Now, go to the "target" folder and copy .war to tomcat's "webapps" directory
+  - Setup database
   - Then, launch tomcat (ubuntu: give permissions to "startup.sh" and "catalina.sh", then execute "startup.sh" from tomcat's bin directory)
   - Go to "localhost:8080/AkvelonTestTask/" (port may be different, depends of your settings)
 

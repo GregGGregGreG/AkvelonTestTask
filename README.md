@@ -12,12 +12,12 @@ Software used:
 How-to instructions:
   - Go to the root folder, where build.xml is placed
   - Open terminal
-  - Type "ant package"
+  - Type "ant package" (Ant must be installed and configured)
   - Now, go to the "target" folder and copy .war to tomcat's "webapps" directory
-  - Setup database
-  - Then, launch tomcat (ubuntu: give permissions to "startup.sh" and "catalina.sh", then execute "startup.sh" from tomcat's bin directory)
+  - Setup database (See Additional notes for path to script)
+  - Then, install and launch tomcat (ubuntu: give permissions to "startup.sh" and "catalina.sh", then execute "startup.sh" from tomcat's bin directory; windows: just execute "startup.bat" from command line)
   - Go to "localhost:8080/AkvelonTestTask/" (port may be different, depends of your settings)
 
 Additional notes:
-  - Database connection properies can be found in file src/main/resources/db.properties
+  - Database connection properties can be found in file src/main/resources/db.properties
   - Script for database table creation: src/main/resources/sql/test_db_person_info.sql

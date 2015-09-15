@@ -39,7 +39,7 @@
 	<!-- Bundle with messages -->
 	<bean id="resourceBundleLocator"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-		p:basename="classpath:messages"
+		p:basename="WEB-INF/messages_en"
 		p:defaultEncoding="UTF-8" 
 		p:useCodeAsDefaultMessage="true"/>
 		

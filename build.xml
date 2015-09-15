@@ -67,10 +67,12 @@
 	<target name="copy-resources" description="copying resources(.xml, .properties) to war">
 		<copy todir="${classes.dir}">
 			<fileset dir="${resources.main.dir}">
-				<include name="**/*.xml" />
-				<include name="**/*.properties" />
+				<include name="**/*.xml"/>
+				<include name="**/*.properties"/>
+				<exclude name="messages_en.properties"/>
 			</fileset>
 		</copy>
+		<copy file="${resources.main.dir}/messages_en.properties" todir="${webinf.dir}"/>
 	</target>
 
 	<!-- Create the WAR -->
@@ -89,6 +91,11 @@
 		<delete dir="${classes.dir}" />
 		<delete dir="${target.dir}" />
 		<delete dir="${lib.dir}"/>
+		<delete>
+			<fileset dir="${webinf.dir}">
+				<include name="**/*.properties"/> 
+			</fileset>
+		</delete>
 	</target>
 
 	<target name="main" depends="package" />

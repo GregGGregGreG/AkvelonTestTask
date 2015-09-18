@@ -1,26 +1,35 @@
 package org.akvelontesttask.dto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.akvelontesttask.domain.PersonInfo;
+import org.akvelontesttask.validation.PastDate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * DTO for personInfo form. Has validation rules.
  * @author baddev
  *
  */
-
 public class PersonInfoForm {
+	
+	/*group #1
+	   (19|20)\\d\\d #	19[0-9][0-9] or 20[0-9][0-9]
+	   - # "-"
+	  group #2
+	   0?[1-9] # 01-09 or 1-9 | # ..or 1[012] # 10,11,12
+	   - # "-"
+	  group #3
+	   0?[1-9] # 01-09 or 1-9 | # ..or [12][0-9] # 10-19 or 20-29 | #  ..or 3[01] # 30, 31
+	*/
+	public static final String DATE_PATTERN = "((19|20)\\d\\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])";
 
 	@NotEmpty(message="{err.empty}")
 	@Size(max=45, min=2, message="{err.name_len}")
@@ -36,12 +45,10 @@ public class PersonInfoForm {
 	@Range(min=1, max=150, message="{err.age}")
 	private Integer age;
 
-	@NotNull(message="{err.empty_date}")
-	@Past(message="{err.future_date}")
-	@Temporal(TemporalType.DATE)
-	//handles data-binding (parsing) and display if spring form tld or spring:eval
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date birthDate;
+	@NotEmpty(message="{err.empty}")
+	@Pattern(regexp = DATE_PATTERN, message="{err.inv_date}")
+	@PastDate
+	private String birthDate;
 
 	@NotNull(message="{err.empty_gender}")
 	private Character gender;
@@ -70,11 +77,11 @@ public class PersonInfoForm {
 		this.age = age;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -87,10 +94,17 @@ public class PersonInfoForm {
 	}
 	
 	public PersonInfo makePersonInfo(){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			date = df.parse(this.birthDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		return new PersonInfo.Builder(this.firstName, this.lastName)
 				.age(this.age)
 				.gender(this.gender)
-				.birthDate(this.birthDate)
+				.birthDate(date)
 			.build();
 	}
 

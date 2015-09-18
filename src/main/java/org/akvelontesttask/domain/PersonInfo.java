@@ -41,7 +41,6 @@ public class PersonInfo implements IEntity<Long> {
 	private Integer age;
 
 	@Temporal(TemporalType.DATE)
-	//handles data-binding (parsing)
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "birth_date", nullable = false)
 	private Date birthDate;

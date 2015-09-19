@@ -150,9 +150,10 @@ public class PersonInfoControllerTest {
 	public void testGetEditPageForEdit() throws Exception{
 		mockMvc.perform(get("/1/edit"))
 				.andExpect(status().isOk())
-				.andExpect(model().size(2))
+				.andExpect(model().size(3))
 				.andExpect(model().attributeExists("personInfoForm"))
-				.andExpect(model().attributeExists("title"));
+				.andExpect(model().attributeExists("title"))
+				.andExpect(model().attributeExists("mode"));
 		verify(personInfoServiceMock, times(1)).load(1L);
 		verifyNoMoreInteractions(personInfoServiceMock);
 	}
@@ -198,9 +199,10 @@ public class PersonInfoControllerTest {
 	public void testGetEditPageForAdd() throws Exception {
 		mockMvc.perform(get("/add"))
 				.andExpect(status().isOk())
-				.andExpect(model().size(2))
+				.andExpect(model().size(3))
 				.andExpect(model().attributeExists("personInfoForm"))
-				.andExpect(model().attributeExists("title"));
+				.andExpect(model().attributeExists("title"))
+				.andExpect(model().attributeExists("mode"));;
 		verifyZeroInteractions(personInfoServiceMock);
 	}
 	

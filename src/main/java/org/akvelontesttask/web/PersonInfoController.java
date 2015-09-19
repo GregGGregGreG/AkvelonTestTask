@@ -67,6 +67,7 @@ public class PersonInfoController {
 		if (!model.containsAttribute("personInfoForm")) {
 			model.addAttribute("personInfoForm", getPersonInfoService().load(id));
 		}
+		model.addAttribute("mode", "edit");
 		model.addAttribute("title", "Edit Person Info");
 		return "edit";
 	}
@@ -93,6 +94,7 @@ public class PersonInfoController {
 			model.addAttribute("personInfoForm", new PersonInfoForm());
 		}
 		model.addAttribute("title", "Add New Person Info");
+		model.addAttribute("mode", "add");
 		return "edit";
 	}
 

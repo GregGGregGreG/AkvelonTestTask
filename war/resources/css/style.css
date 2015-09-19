@@ -1,6 +1,5 @@
 body {
 	margin: 0 auto;
-	/* background: #FAFAFF; */
 	background-image: url(../img/bg_dotted.png);
 	background-repeat: repeat; 
 	width: 100%;
@@ -22,6 +21,14 @@ table {
 	background: #fff;
 	border: 1px solid #FF6666;
 	margin: 0 auto;
+}
+
+table:hover {
+	box-shadow: 0 0 5px rgba(255, 102, 102, 0.5);
+}
+
+th>h3 {
+	font-size: 95%;
 }
 
 /* Title */
@@ -67,6 +74,7 @@ table {
 	background-color: #FF6666;
 }
 /* End title */
+
 .delimiter {
 	height: 50px;
 	clear: both;
@@ -79,10 +87,11 @@ table {
 	text-align: center;
 }
 
-.red {
+.red-text {
 	color: #FF6666;
 }
 
+/* Error messages */
 .error {
 	color: #FF6666;
 	font-size: 75%;
@@ -90,19 +99,11 @@ table {
 	position:relative;
 }
 
+/* Hides elements */
 .hidden {
-	visibility: hidden;
+	display: none;
 	opacity: 0;
-}
-
-.overlay.hidden {
-	visibility: hidden;
-	opacity: 0;
-}
-
-.visible {
-	visibility: visible;
-	opacity: 1;
+	width: 0;
 }
 
 /* Popup */
@@ -113,8 +114,6 @@ table {
 	left: 0;
 	right: 0;
 	background: rgba(0, 0, 0, 0.5);
-	visibility: visible;
-	opacity: 1;
 }
 
 .popup {
@@ -176,13 +175,19 @@ table {
 	width: 250px;
 }
 
+.input:focus {
+	border:thin solid #99CCFF;
+}
+
+/* Applies to error-containing inputs when validation fails */
+.red-bord {
+	border:thin solid #FF6666;
+	box-shadow:0 0 3px #FF6666;
+}
+
 .btn {
 	background-color: #FF6666;
 	opacity:0.9;
-	/**
-     * If the input field has a border,
-     * you need it here too to achieve equal heights.
-     */
 	border: 1px solid transparent;
 	font-weight: bold;
 }
@@ -190,6 +195,7 @@ table {
 .btn:hover{
 	cursor: pointer;
 	opacity:1;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 /**

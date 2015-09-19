@@ -20,15 +20,17 @@ $(document).ready(function() {
 		location.reload();
 	});
 	
+	//if error block contains error, show it and make corresponding error fields red
 	$('span.error').each(function(){
 	    if ($(this).text().trim().length>0) {
-	        var error = $('td').has(this);
-	        error.removeClass('hidden').addClass('visible');
+	        var $hiddenData = $('td').has(this);
+	        $hiddenData.parent().find('input').addClass('red-bord');
+	        $hiddenData.toggleClass('hidden');
 	    }
 	});
 	
 	$closePopupBtn.click(function(){
-		$overlay.addClass('hidden');
+		$overlay.toggleClass('hidden');
 	});
 
 	// when clicked on some checkbox except #select_all
